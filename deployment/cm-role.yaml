@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: secret-syncer
+  namespace: secret-syncer
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get", "list", "watch"]
+
+# This role is needed so secret-syncer can watch its own configmap. We did not want to put it
+# in the ClusterRole because it should just be able to watch its cm and not the whole cluster
