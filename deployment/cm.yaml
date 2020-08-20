@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: secret-syncer
+  namespace: secret-syncer
+data:
+  rules.json: |-
+    [
+      {
+        "origName": "tls-ns",
+        "origNs": "cert-manager",
+        "targetNs": [
+          private-ns}
+        ]
+      },
+    ]
