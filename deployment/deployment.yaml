@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secret-syncer
+  namespace: secret-syncer
+  labels:
+    k8s-app: secret-syncer
+spec:
+  selector:
+    matchLabels:
+      k8s-app: secret-syncer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        k8s-app: secret-syncer
+    spec:
+      serviceAccountName: secret-syncer
+      containers:
+      - name: secret-syncer
+        image: 
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 5m
+            memory: 16Mi
